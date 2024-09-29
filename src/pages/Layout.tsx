@@ -3,7 +3,12 @@ import { Outlet } from 'react-router-dom';
 import NavBar from '../components/NavBar';
 import s from './Layout.module.scss';
 
-const Layout = () => {
+/**
+ * Component for displaying the layout of the application
+ * @component
+ * @returns {JSX.Element} The rendered Layout component
+ */
+const Layout = (): JSX.Element => {
   return (
     <>
       <NavBar />

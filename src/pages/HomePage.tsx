@@ -1,6 +1,11 @@
 import './HomePage.module.scss';
 
-const HomePage = () => {
+/**
+ * Component for displaying the home page
+ * @component
+ * @returns {JSX.Element} The rendered Layout component
+ */
+const HomePage = (): JSX.Element => {
   return <div>Home page</div>;
 };
 

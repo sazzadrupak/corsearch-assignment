@@ -2,6 +2,11 @@ import { NavLink } from 'react-router-dom';
 
 import s from './NotFoundPage.module.scss';
 
+/**
+ * Component for displaying 404 page
+ * @component
+ * @returns {JSX.Element} The rendered NotFoundPage component
+ */
 const NotFoundPage = () => {
   return (
     <div className={s.container}>

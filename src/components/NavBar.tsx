@@ -6,7 +6,13 @@ import { NavLink } from 'react-router-dom';
 
 import s from './NavBar.module.scss';
 
-const NavBar = () => {
+/**
+ * Component for displaying the navigation bar
+ * @description This component is used to navigate between different pages of the application
+ * @component
+ * @returns {JSX.Element} The rendered Layout component
+ */
+const NavBar = (): JSX.Element => {
   const [showNav, setShowNav] = useState(false);
   const toggleNavItems = () => {
     setShowNav(!showNav);

@@ -40,7 +40,7 @@ At this point, the project would run successfully and you can access the project
 http://localhost:5173
 ```
 
-After cloning the repo, go to the project directory which is
+<b>N.B. Once you access the application via browser, the initial page is shown Home page which does not have any content. I suggest you to go click the `Users` menu where all the tasks have been implemented.</b>
 
 ### Build with
 

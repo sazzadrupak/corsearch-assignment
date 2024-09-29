@@ -4,6 +4,11 @@ import HomePage from './pages/HomePage';
 import NotFoundPage from './pages/NotFoundPage';
 import UsersPage from './pages/users/UsersPage';
 
+/*
+ * Routes for the application
+ * @constant
+ * @type {RouteObject[]}
+ */
 const routes: RouteObject[] = [
   {
     path: '/',
