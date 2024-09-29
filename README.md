@@ -1,50 +1,61 @@
-# React + TypeScript + Vite
+# Corsearc assignment
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Project summary
 
-Currently, two official plugins are available:
+Build a simple dashboard that displays a list of users fetched from a REST API and allows the user to filter
+and sort the list. Additionally, ensure the layout adapts to different screen sizes.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Getting Started
 
-## Expanding the ESLint configuration
+These instructions will get you a copy of the project up and running on your local machine.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Prerequisite
 
-- Configure the top-level `parserOptions` property like this:
+Node v20.17.0
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### Installation
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+1. Clone the repo using the following command on your terminal
 
 ```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+git clone git@github.com:sazzadrupak/corsearch-assignment.git
 ```
+
+2. Install npm packages
+   Go inside the project directory which is `corsearch-assignment` and run the following command in your terminal
+
+```js
+npm i
+```
+
+3. Run the project
+
+```js
+npm run dev
+```
+
+At this point, the project would run successfully and you can access the project using your browser via this link
+
+```js
+http://localhost:5173
+```
+
+After cloning the repo, go to the project directory which is
+
+### Build with
+
+- React.JS
+- TypeScript
+- HTML
+- CSS
+- Vite (Build tool to make the local development faster and more)
+
+### Packages
+
+- `axios` (to make http request to fetch users from the given API)
+- `classnames` (for conditionally joining classnames together)
+- `react-icons` (for showing icons on navbar menu)
+- `react-loading-skeleton` (mimic the layout of users page content while data is being fetched from API)
+- `react-query` (for fetching and caching data from the given API and handleing state management)
+- `react-router-dom` (for dynamic routing in the application)
+- `sass` (for using global variables in the application)
