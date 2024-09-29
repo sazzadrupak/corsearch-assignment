@@ -1,9 +1,9 @@
-import { Outlet } from 'react-router-dom';
+import Layout from './pages/Layout';
 
 const App = () => {
   return (
     <>
-      <Outlet />
+      <Layout />
     </>
   );
 };
