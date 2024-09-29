@@ -34,6 +34,10 @@
   height: 100%;
 }
 
+.toggleFieldContainer {
+  position: relative;
+}
+
 @media (max-width: 600px) {
   .container {
     padding: 0;
