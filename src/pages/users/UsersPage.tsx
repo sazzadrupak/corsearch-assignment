@@ -1,3 +1,4 @@
+import ErrorMessage from '../../components/ErrorMessage';
 import UserCard from './UserCard';
 import UsersActions from './UsersActions';
 import UsersSkeleton from './UsersSkeleton';
@@ -10,10 +11,17 @@ import s from './UsersPage.module.scss';
  * @returns {JSX.Element} The rendered UsersPage component
  */
 const UsersPage = () => {
-  const isLoading = true;
+  const isLoading = false;
   if (isLoading) {
     return <UsersSkeleton />;
   }
+
+  const error = true;
+  if (error) {
+    console.log(error);
+    return <ErrorMessage error="Failed to fetch data" />;
+  }
+
   return (
     <div className={s.container}>
       <UsersActions />
