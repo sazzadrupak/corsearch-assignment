@@ -1,12 +1,16 @@
 import { useState } from 'react';
 
-import ErrorMessage from '../../components/ErrorMessage';
+import { useThrottledValue } from '../../hooks';
 import { useUsers } from '../../hooks/users';
+
+import ErrorMessage from '../../components/ErrorMessage';
 import UserCard from './UserCard';
 import UsersActions from './UsersActions';
 import UsersSkeleton from './UsersSkeleton';
 
 import s from './UsersPage.module.scss';
+
+const FILTER_TEXT_THROTTLE_MS = 400;
 
 /**
  * Component for displaying users actions options and a list of users
@@ -20,6 +24,8 @@ const UsersPage = (): JSX.Element => {
   const handleFilterTextChange = (text: string) => {
     setFilterText(text);
   };
+
+  useThrottledValue(filterText, FILTER_TEXT_THROTTLE_MS);
 
   if (isLoading) {
     return <UsersSkeleton />;
