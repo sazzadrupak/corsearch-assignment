@@ -44,21 +44,30 @@ const UsersPage = (): JSX.Element => {
     setSortType(value);
   };
 
-  const [filteredUsers, setFilteredUsers] = useState<User[] | []>([]);
+  const [filteredUsers, setFilteredUsers] = useState<User[]>([]);
   useEffect(() => {
     if (users && selectedFilterItem) {
-      const res = users.filter((user) =>
-        throttledInput
-          ? user[selectedFilterItem]
-              .toLowerCase()
-              .includes(throttledInput.toLowerCase())
-          : user
-      );
-      setFilteredUsers(res);
+      const filteredAndSorted = users.reduce<User[]>(() => {
+        const filtered = throttledInput
+          ? users.filter((user) =>
+              user[selectedFilterItem]
+                .toLowerCase()
+                .includes(throttledInput.toLowerCase())
+            )
+          : users;
+
+        const sorted = filtered.sort((a, b) =>
+          sortType
+            ? a[selectedFilterItem].localeCompare(b[selectedFilterItem])
+            : b[selectedFilterItem].localeCompare(a[selectedFilterItem])
+        );
+        return sorted;
+      }, []);
+      setFilteredUsers(filteredAndSorted);
     } else if (users) {
       setFilteredUsers(users);
     }
-  }, [throttledInput, selectedFilterItem, users]);
+  }, [throttledInput, selectedFilterItem, sortType, users]);
 
   if (isLoading) {
     return <UsersSkeleton />;
@@ -66,7 +75,7 @@ const UsersPage = (): JSX.Element => {
 
   if (error) {
     console.log(error);
-    return <ErrorMessage error="Failed to fetch data" />;
+    return <ErrorMessage error="No Data found" />;
   }
 
   return (
