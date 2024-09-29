@@ -1,5 +1,7 @@
 import UserCard from './UserCard';
 import UsersActions from './UsersActions';
+import UsersSkeleton from './UsersSkeleton';
+
 import s from './UsersPage.module.scss';
 
 /**
@@ -8,6 +10,10 @@ import s from './UsersPage.module.scss';
  * @returns {JSX.Element} The rendered UsersPage component
  */
 const UsersPage = () => {
+  const isLoading = true;
+  if (isLoading) {
+    return <UsersSkeleton />;
+  }
   return (
     <div className={s.container}>
       <UsersActions />
