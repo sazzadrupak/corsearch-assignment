@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
+import { option, userFilterStrings, usersFilterOptions } from '../../entities';
 import { useThrottledValue } from '../../hooks';
 import { useUsers } from '../../hooks/users';
 
@@ -25,7 +26,17 @@ const UsersPage = (): JSX.Element => {
     setFilterText(text);
   };
 
-  useThrottledValue(filterText, FILTER_TEXT_THROTTLE_MS);
+  const throttledInput = useThrottledValue(filterText, FILTER_TEXT_THROTTLE_MS);
+
+  const [selectedFilterItem, setSelectedFilterItem] =
+    useState<userFilterStrings | null>(null);
+  const handleUserFilter = (filter: option) => {
+    setSelectedFilterItem(filter.value);
+  };
+
+  useEffect(() => {
+    console.log(throttledInput, selectedFilterItem);
+  }, [throttledInput, selectedFilterItem]);
 
   if (isLoading) {
     return <UsersSkeleton />;
@@ -40,7 +51,10 @@ const UsersPage = (): JSX.Element => {
     <div className={s.container}>
       <UsersActions
         filterText={filterText}
+        selectedFilterItem={selectedFilterItem}
+        options={usersFilterOptions}
         onFilterTextChange={handleFilterTextChange}
+        onUserFilter={handleUserFilter}
       />
       <UserCard users={users!} />
     </div>
