@@ -1,0 +1,120 @@
+.cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  padding: 0 60px;
+}
+
+.userCard {
+  height: 400px;
+  width: 320px;
+  border: 1px solid rgba($color-border, 0.2);
+  border-radius: 8px;
+  box-shadow: 10px 10px 12px rgba(0, 0, 0, 0.2);
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.userCard:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.userImage {
+  height: 120px;
+  width: 120px;
+  margin: 20px auto;
+}
+.userImage img {
+  height: 100%;
+  border-radius: 50%;
+}
+
+.userProfile {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.primaryText {
+  color: $color-text;
+  font-size: $font-20;
+  font-weight: $font-weight-600;
+  letter-spacing: 0.7px;
+  margin: 5px 0;
+}
+.secondaryText {
+  color: $color-text;
+  font-weight: $font-weight-400;
+  font-size: $font-16;
+  letter-spacing: 1px;
+  margin: 5px 0;
+}
+.websiteButton {
+  background-color: $color-link;
+  color: white;
+  padding: 15px 25px;
+  text-decoration: none;
+  margin: 16px 24px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.websiteButton:hover {
+  background-color: $color-text;
+}
+
+.userAddress {
+  display: flex;
+  width: 100%;
+  height: 54px;
+  position: absolute;
+  bottom: 0;
+  border-radius: 0 0 8px 8px;
+  font-size: $font-14;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 1;
+  font-weight: $font-weight-400;
+  border-top: 1px solid rgba($color-border, 0.3);
+}
+
+.addressIcon {
+  margin-right: 4px;
+}
+
+/* Media Queries for Tablets and Smaller Devices */
+@media (max-width: 768px) {
+  .cardContainer {
+    justify-content: space-around;
+    padding: 0;
+  }
+
+  .userCard {
+    width: 100%;
+    min-height: 340px;
+  }
+}
+
+@media (max-width: 600px) {
+  .cardContainer {
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+  }
+
+  .userCard {
+    width: 100%;
+    min-height: 340px;
+  }
+
+  .userAddress {
+    font-size: $font-12;
+  }
+}
