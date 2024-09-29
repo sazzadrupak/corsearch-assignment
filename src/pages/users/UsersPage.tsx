@@ -1,6 +1,7 @@
-import { useUsers } from '../../hooks/users';
+import { useState } from 'react';
 
 import ErrorMessage from '../../components/ErrorMessage';
+import { useUsers } from '../../hooks/users';
 import UserCard from './UserCard';
 import UsersActions from './UsersActions';
 import UsersSkeleton from './UsersSkeleton';
@@ -15,6 +16,11 @@ import s from './UsersPage.module.scss';
 const UsersPage = (): JSX.Element => {
   const { data: users, isLoading, error } = useUsers();
 
+  const [filterText, setFilterText] = useState('');
+  const handleFilterTextChange = (text: string) => {
+    setFilterText(text);
+  };
+
   if (isLoading) {
     return <UsersSkeleton />;
   }
@@ -26,7 +32,10 @@ const UsersPage = (): JSX.Element => {
 
   return (
     <div className={s.container}>
-      <UsersActions />
+      <UsersActions
+        filterText={filterText}
+        onFilterTextChange={handleFilterTextChange}
+      />
       <UserCard users={users!} />
     </div>
   );
