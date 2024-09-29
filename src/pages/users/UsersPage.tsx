@@ -1,6 +1,11 @@
 import { useEffect, useState } from 'react';
 
-import { option, userFilterStrings, usersFilterOptions } from '../../entities';
+import {
+  option,
+  User,
+  userFilterStrings,
+  usersFilterOptions,
+} from '../../entities';
 import { useThrottledValue } from '../../hooks';
 import { useUsers } from '../../hooks/users';
 
@@ -34,9 +39,21 @@ const UsersPage = (): JSX.Element => {
     setSelectedFilterItem(filter.value);
   };
 
+  const [filteredUsers, setFilteredUsers] = useState<User[] | []>([]);
   useEffect(() => {
-    console.log(throttledInput, selectedFilterItem);
-  }, [throttledInput, selectedFilterItem]);
+    if (users && selectedFilterItem) {
+      const res = users.filter((user) =>
+        throttledInput
+          ? user[selectedFilterItem]
+              .toLowerCase()
+              .includes(throttledInput.toLowerCase())
+          : user
+      );
+      setFilteredUsers(res);
+    } else if (users) {
+      setFilteredUsers(users);
+    }
+  }, [throttledInput, selectedFilterItem, users]);
 
   if (isLoading) {
     return <UsersSkeleton />;
@@ -56,7 +73,7 @@ const UsersPage = (): JSX.Element => {
         onFilterTextChange={handleFilterTextChange}
         onUserFilter={handleUserFilter}
       />
-      <UserCard users={users!} />
+      <UserCard users={filteredUsers} />
     </div>
   );
 };
