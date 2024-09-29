@@ -1,4 +1,6 @@
+import SelectField from '../../components/SelectField';
 import TextField from '../../components/TextField';
+
 import s from './UsersActions.module.scss';
 
 const UsersActions = () => {
@@ -7,6 +9,9 @@ const UsersActions = () => {
       <div className={s.inputGroup}>
         <div className={s.textFieldContainer}>
           <TextField className={s.textField} />
+        </div>
+        <div className={s.selectFieldContainer}>
+          <SelectField className={s.selectField} />
         </div>
       </div>
     </div>

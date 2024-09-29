@@ -1,0 +1,78 @@
+.wrapper {
+  position: relative;
+}
+
+.select {
+  align-items: center;
+  background-color: #ffffff;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  font-size: $font-12;
+  position: relative;
+  border: 1px solid $color-border;
+  padding: 0 24px 0 15px;
+  width: 100%;
+  &::after {
+    content: url('../assets/select-field-arrow-icon.svg');
+    position: absolute;
+    right: 6px;
+    top: 12px;
+  }
+}
+
+.expanded {
+  box-shadow: 0 0 0 1px $color-link;
+  border-radius: 0 8px 8px 0;
+}
+
+.options {
+  box-shadow: 0 0 6px 0 rgba(50, 50, 50, 0.35);
+  border: 1px solid rgba(#d5d5d5, 0.5);
+  border-radius: 4px;
+  display: block;
+  font-size: $font-12;
+  position: absolute;
+  right: 0;
+  top: 42px;
+  left: 0;
+  z-index: 1;
+  max-height: 204px;
+  overflow: auto;
+}
+.option {
+  background-color: #ffffff;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  height: 32px;
+  cursor: pointer;
+  &:hover {
+    background-color: $color-dropdown-option;
+  }
+  &:first-child {
+    border-radius: 4px 4px 0 0;
+  }
+  &:last-child {
+    border-radius: 0 0 4px 4px;
+  }
+}
+.selected {
+  background-color: $color-link;
+  color: #ffffff;
+  cursor: pointer;
+  &:hover {
+    background-color: $color-link;
+    color: #ffffff;
+  }
+}
+
+@media (max-width: 768px) {
+  .select {
+    padding-left: 8px;
+    font-size: 10px;
+  }
+}
