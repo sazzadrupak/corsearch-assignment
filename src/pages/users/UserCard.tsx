@@ -43,7 +43,7 @@ const UserCard = ({ users }: Props): JSX.Element => {
             target="_blank"
             className={cn(s.websiteButton, s.secondaryText)}
           >
-            View website
+            {user.website}
           </a>
           <div className={cn(s.userAddress)}>
             <SiGooglemaps className={s.addressIcon} />
