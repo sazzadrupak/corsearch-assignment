@@ -39,6 +39,11 @@ const UsersPage = (): JSX.Element => {
     setSelectedFilterItem(filter.value);
   };
 
+  const [sortType, setSortType] = useState<boolean>(false);
+  const handleSortTypeChange = (value: boolean) => {
+    setSortType(value);
+  };
+
   const [filteredUsers, setFilteredUsers] = useState<User[] | []>([]);
   useEffect(() => {
     if (users && selectedFilterItem) {
@@ -70,8 +75,10 @@ const UsersPage = (): JSX.Element => {
         filterText={filterText}
         selectedFilterItem={selectedFilterItem}
         options={usersFilterOptions}
+        sortType={sortType}
         onFilterTextChange={handleFilterTextChange}
         onUserFilter={handleUserFilter}
+        onSortTypeChange={handleSortTypeChange}
       />
       <UserCard users={filteredUsers} />
     </div>

@@ -10,8 +10,10 @@ interface Props {
   filterText: string;
   selectedFilterItem: userFilterStrings | null;
   options: typeof usersFilterOptions;
+  sortType: boolean;
   onFilterTextChange: (text: string) => void;
   onUserFilter: (option: option) => void;
+  onSortTypeChange: (value: boolean) => void;
 }
 
 /**
@@ -21,16 +23,20 @@ interface Props {
  * @param {string} props.filterText - The current filter text
  * @param {string} props.selectedFilterItem - The currently selected filter item
  * @param {array} props.options - Array of filter options
+ * @param {boolean} props.sortType - The current sort type (true for ascending, false for descending)
  * @param {function} props.onUserFilter - Callback function for handling user filter selection
  * @param {function} props.onFilterTextChange - Callback function for handling filter text changes
+ * @param {function} props.onSortTypeChange - Callback function for handling sort type changes
  * @returns {JSX.Element} The rendered UsersActions component
  */
 const UsersActions = ({
   filterText,
   selectedFilterItem,
   options,
+  sortType,
   onFilterTextChange,
   onUserFilter,
+  onSortTypeChange,
 }: Props): JSX.Element => {
   return (
     <div className={s.container}>
@@ -52,7 +58,7 @@ const UsersActions = ({
         </div>
       </div>
       <div className={s.toggleFieldContainer}>
-        <ToggleField />
+        <ToggleField value={sortType} onChange={onSortTypeChange} />
       </div>
     </div>
   );

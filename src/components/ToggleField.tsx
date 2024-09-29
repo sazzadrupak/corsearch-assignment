@@ -1,30 +1,33 @@
 import cn from 'classnames';
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent } from 'react';
 
 import s from './ToggleField.module.scss';
 
 interface Props {
   className?: string;
+  value: boolean;
+  onChange: (value: boolean) => void;
 }
 /**
  * Component for toggling between ASC and DESC order
  * @component
  * @param {object} Props - component accepts className as a prop
  * @param {string} Props.className - optional className for the component
+ * @param {boolean} Props.value - current value of the toggle
+ * @param {function} Props.onChange - function to handle toggle change
  * @returns {JSX.Element} The rendered ToggleField component
  */
-const ToggleField = ({ className }: Props) => {
-  const [checked, setChecked] = useState(false);
+const ToggleField = ({ className, value, onChange }: Props): JSX.Element => {
   const handleChange = (ev: ChangeEvent<HTMLInputElement>) => {
     const { checked } = ev.target;
-    setChecked(checked);
+    onChange(checked);
   };
   return (
     <div className={cn(s.toggleContainer, className)}>
       <input
         id="toggle-switch"
         type="checkbox"
-        checked={checked}
+        checked={value}
         className={s.toggleInput}
         onChange={handleChange}
       />
